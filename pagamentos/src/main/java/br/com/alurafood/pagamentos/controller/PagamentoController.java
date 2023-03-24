@@ -43,4 +43,16 @@ public class PagamentoController {
 
         return ResponseEntity.created(endereco).body(pagamento);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PagamentoDto> atualizar(@PathVariable @NotNull Long id, @RequestBody @Valid PagamentoDto dto) {
+        PagamentoDto atualizado = service.atualizarPagamento(id, dto);
+        return ResponseEntity.ok(atualizado);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<PagamentoDto> remover(@PathVariable @NotNull Long id) {
+        service.excluirPagamento(id);
+        return ResponseEntity.noContent().build();
+    }
 }
