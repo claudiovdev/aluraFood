@@ -1,6 +1,6 @@
 package br.com.alurafood.pagamentos.enums;
 
-public enum Status {
+public  enum Status {
     CRIADO,
     CONFIRMADO,
     CANCELADO

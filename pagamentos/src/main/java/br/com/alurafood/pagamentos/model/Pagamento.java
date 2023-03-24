@@ -1,6 +1,7 @@
 package br.com.alurafood.pagamentos.model;
 
-import ch.qos.logback.core.status.Status;
+
+import br.com.alurafood.pagamentos.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

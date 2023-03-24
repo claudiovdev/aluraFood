@@ -1,12 +1,16 @@
 package br.com.alurafood.pagamentos.services;
 
 import br.com.alurafood.pagamentos.dtos.PagamentoDto;
+import br.com.alurafood.pagamentos.enums.Status;
+import br.com.alurafood.pagamentos.model.Pagamento;
 import br.com.alurafood.pagamentos.repository.PagamentoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 public class PagamentoService {
@@ -23,5 +27,19 @@ public class PagamentoService {
                 .map(p -> modelMapper.map(p, PagamentoDto.class));
     }
 
+    public PagamentoDto obterPorId(Long id) {
+        Pagamento pagamento = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException());
+
+        return modelMapper.map(pagamento, PagamentoDto.class);
+    }
+
+    public PagamentoDto criarPagamento(PagamentoDto dto) {
+        Pagamento pagamento = modelMapper.map(dto, Pagamento.class);
+        pagamento.setStatus(Status.CRIADO);
+        repository.save(pagamento);
+
+        return modelMapper.map(pagamento, PagamentoDto.class);
+    }
 
 }
