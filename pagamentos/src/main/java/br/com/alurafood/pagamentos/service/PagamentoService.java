@@ -1,9 +1,9 @@
-package br.com.alurafood.pagamentos.services;
+package br.com.alurafood.pagamentos.service;
 
-import br.com.alurafood.pagamentos.dtos.PagamentoDto;
-import br.com.alurafood.pagamentos.enums.Status;
+import br.com.alurafood.pagamentos.dto.PagamentoDto;
 import br.com.alurafood.pagamentos.model.Pagamento;
-import br.com.alurafood.pagamentos.repository.PagamentoRepository;
+import br.com.alurafood.pagamentos.model.Status;
+import br.com.alurafood.pagamentos.repository.PagamentoRepositoy;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,10 +16,11 @@ import javax.persistence.EntityNotFoundException;
 public class PagamentoService {
 
     @Autowired
-    private PagamentoRepository repository;
+    private PagamentoRepositoy repository;
 
     @Autowired
     private ModelMapper modelMapper;
+
 
     public Page<PagamentoDto> obterTodos(Pageable paginacao) {
         return repository
@@ -53,4 +54,7 @@ public class PagamentoService {
         repository.deleteById(id);
     }
 
+
+
 }
+
