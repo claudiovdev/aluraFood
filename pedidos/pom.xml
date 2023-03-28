@@ -65,6 +65,11 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 			<version>3.1.2</version>
 		</dependency>
+		<dependency>
+			<groupId>br.com.alurafood</groupId>
+			<artifactId>pedidos</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
